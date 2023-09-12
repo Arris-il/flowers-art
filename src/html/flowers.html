@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{> partials/head title="Klio Flowers"}}
+</head>
+
+<body>
+
+<section class="navbar-sticky navbar-dark"
+         button="btn-outline-white">
+    <nav id="mainNav" class="navbar navbar-expand-lg {{class}}">
+        <div class="container">
+            <a href="{{root}}/flowers.html" class="navbar-brand"><img src="./assets/images/logo/logo-light.svg"
+                                                                      alt="Logo"></a>
+
+            <!-- secondary -->
+            <ul class="navbar-nav navbar-nav-secondary order-lg-3">
+                {{#if shop}}
+                <li class="nav-item">
+                    <a class="nav-link nav-icon" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
+                       aria-controls="offcanvasCart">
+                        <i class="bi bi-cart2"></i>
+                    </a>
+                </li>
+                {{/if}}
+                {{#if account}}
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link nav-icon" href="" role="button" data-bs-toggle="collapse"
+                       data-bs-target="#userNav"
+                       aria-expanded="false">
+                        <i class="bi bi-person"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown dropdown-hover d-none d-lg-block">
+                    <a class="nav-link nav-icon" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="bi bi-person"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item {{#equals active 'dashboard'}}active{{/equals}}"
+                               href="{{root}}/account.html">Dashboard</a></li>
+                        <li><a class="dropdown-item {{#equals active 'settings'}}active{{/equals}}"
+                               href="{{root}}/account-settings.html">Settings</a></li>
+                        <li><a class="dropdown-item {{#equals active 'orders'}}active{{/equals}}"
+                               href="{{root}}/account-orders.html">Orders</a></li>
+                        <li><a class="dropdown-item {{#equals active 'billing'}}active{{/equals}}"
+                               href="{{root}}/account-billing.html">Billing</a></li>
+                        <li><a class="dropdown-item text-red" href="#">Log Out</a></li>
+                    </ul>
+                </li>
+                {{/if}}
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link nav-icon" href="" role="button" data-bs-toggle="collapse"
+                       data-bs-target="#navbar"
+                       aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="bi bi-list"></span>
+                    </a>
+                </li>
+                {{#if button}}
+                <li class="nav-item d-none d-lg-block">
+                    <a href="" class="btn {{button}} rounded-pill ms-2">
+                        Order Now!
+                    </a>
+                </li>
+                {{/if}}
+            </ul>
+
+            <!-- primary -->
+            <div class="collapse navbar-collapse" id="navbar" data-bs-parent="#mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle" href="#portfolio" id="navbarDropdown-1" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Landings
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Pages
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-3" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false" data-bs-auto-close="outside">
+                            Account
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-4" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false" data-bs-auto-close="outside">
+                            Shop
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-5" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Docs
+                        </a>
+                        <span>
+                </span>
+                        </a>
+                    </li>
+                    <!--                <li><a class="dropdown-item {{#equals active 'components'}}active{{/equals}}"-->
+                    <!--                       href="{{root}}/docs/accordion.html">-->
+                    <!--&lt;!&ndash;                <span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                  <i class="bi bi-grid"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                  Components&ndash;&gt;-->
+                    <!--&lt;!&ndash;                  <small>Full list of components</small>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                </span>&ndash;&gt;-->
+                    <!--                </a>-->
+                    <!--                </li>-->
+                </ul>
+                </li>
+                {{#if button}}
+                <li class="nav-item d-lg-none">
+                    <a href="#!"
+                       class="nav-link text-primary">Order Now!</a>
+                </li>
+                {{/if}}
+                </ul>
+            </div>
+
+
+            <!-- mobile user menu -->
+            {{#if account}}
+            <div class="collapse account-collapse" id="userNav" data-bs-parent="#mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {{#equals active 'dashboard'}}active{{/equals}}" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{#equals active 'settings'}}active{{/equals}}" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{#equals active 'orders'}}active{{/equals}}" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{#equals active 'billing'}}active{{/equals}}" href="#">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-red" href="#">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+
+
+        </div>
+    </nav>
+
+
+    {{#if shop}}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCart">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCartLabel">Shopping Cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li>
+                    <div class="row g-2 g-lg-3 align-items-center">
+                        <a href="" class="col-3"><img class="img-fluid"
+                                                      src="{{root}}/assets/images/products/product-1.jpg"
+                                                      alt="Product"></a>
+                        <div class="col">
+                            <a href="" class="text-black text-primary-hover lead">Bluetooth Speaker</a>
+                            <ul class="list-inline text-muted">
+                                <li class="list-inline-item">Price: <span class="text-secondary">$90</span></li>
+                                <li class="list-inline-item">Color: <span class="text-secondary">Blue</span></li>
+                                <li class="list-inline-item">Qty:
+                                    <div class="counter text-secondary" data-counter="qty-1">
+                                        <span class="counter-minus bi bi-dash"></span>
+                                        <input type="number" name="qty-1" class="counter-value" value="0" min="0"
+                                               max="10">
+                                        <span class="counter-plus bi bi-plus"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="" class="text-red underline">Remove</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-4">
+                    <div class="row g-2 g-lg-3 align-items-center">
+                        <a href="" class="col-3"><img class="img-fluid"
+                                                      src="{{root}}/assets/images/products/product-2.jpg"
+                                                      alt="Product"></a>
+                        <div class="col">
+                            <a href="" class="text-black text-primary-hover lead">Bluetooth Speaker</a>
+                            <ul class="list-inline text-muted">
+                                <li class="list-inline-item">Price: <span class="text-secondary">$90</span></li>
+                                <li class="list-inline-item">Color: <span class="text-secondary">Blue</span></li>
+                                <li class="list-inline-item">Qty:
+                                    <div class="counter text-secondary" data-counter="qty-1">
+                                        <span class="counter-minus bi bi-dash"></span>
+                                        <input type="number" name="qty-1" class="counter-value" value="0" min="0"
+                                               max="10">
+                                        <span class="counter-plus bi bi-plus"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="" class="text-red underline">Remove</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="mt-4">
+                    <div class="row g-2 g-lg-3 align-items-center">
+                        <a href="" class="col-3"><img class="img-fluid"
+                                                      src="{{root}}/assets/images/products/product-3.jpg"
+                                                      alt="Product"></a>
+                        <div class="col">
+                            <a href="" class="text-black text-primary-hover lead">Bluetooth Speaker</a>
+                            <ul class="list-inline text-muted">
+                                <li class="list-inline-item">Price: <span class="text-secondary">$90</span></li>
+                                <li class="list-inline-item">Color: <span class="text-secondary">Blue</span></li>
+                                <li class="list-inline-item">Qty:
+                                    <div class="counter text-secondary" data-counter="qty-1">
+                                        <span class="counter-minus bi bi-dash"></span>
+                                        <input type="number" name="qty-1" class="counter-value" value="0" min="0"
+                                               max="10">
+                                        <span class="counter-plus bi bi-plus"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="" class="text-red underline">Remove</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="offcanvas-footer">
+            <div class="d-grid gap-1">
+                <a href="" class="btn btn-outline-light rounded-pill">View Cart</a>
+                <a href="" class="btn btn-primary rounded-pill">Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</section>
+
+
+<div class="offcanvas-wrap">
+
+
+    <section class="bg-black inverted overflow-hidden">
+        <div class="container py-20 d-flex flex-column min-vh-100 foreground">
+            <div class="row my-auto justify-content-center">
+                <div class="col-lg-6 text-center" data-center-center="transform: translateY(0%);"
+                     data-top-bottom="transform: translateY(10%);">
+                    <h1 class="display-1 text-shadow">Klio Flower</h1>
+                    <span class="badge bg-opaque-red rounded-pill text-red mb-4">The art of flowers</span>
+
+                </div>
+            </div>
+        </div>
+        <figure class="background background-gradient-vertical" data-aos="zoom-out" data-aos-delay="400">
+            <img class="w-40 shadow position-absolute top-10 end-70" src="./assets/images/blocks/block-1.jpg" alt=""
+                 data-center-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-80%);">
+
+            <img class="w-40 shadow position-absolute top-80 start-20" src="./assets/images/blocks/block-2.jpg" alt=""
+                 data-bottom-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-50%);">
+
+            <img class="w-40 shadow position-absolute top-0 start-60" src="./assets/images/blocks/block-3.jpg" alt=""
+                 data-bottom-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-50%);">
+
+            <img class="w-40 shadow position-absolute top-60 start-80" src="./assets/images/blocks/block-4.jpg" alt=""
+                 data-bottom-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-120%);">
+
+            <img class="w-40 shadow position-absolute top-100 start-50" src="./assets/images/blocks/block-5.jpg" alt=""
+                 data-bottom-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-60%);">
+
+            <img class="w-40 shadow position-absolute top-60 end-90" src="./assets/images/blocks/block-6.jpg" alt=""
+                 data-bottom-top="transform: translateY(0%);" data-top-bottom="transform: translateY(-80%);">
+        </figure>
+        <span class="scroll-down"></span>
+    </section>
+
+
+    <!--Portfolio Grid-->
+
+    <div id="portfolio"></div>
+    <section class="pb-15 py-xl-20">
+        <div class="container mt-5 mt-xl-10">
+            <div class="row mb-10 g-3 g-xl-5 align-items-end">
+                <div class="col-lg-8">
+                    <h1 class="display-1">Прекрасные букеты для прекрасных дам</h1>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <p class="fs-lg text-muted">Более <span class="text-black">2000</span> <span class="d-block"> довольных клиентов по всей стране</span>
+                    </p>
+                </div>
+            </div>
+            <div class="mb-5">
+                <button class="btn btn-filter rounded-pill current" data-filter="*" data-target="#grid1">all</button>
+                <!--architecture-->
+                <button class="btn btn-filter rounded-pill" data-filter=".architecture"
+                        data-target="#grid1">Букеты
+                </button>
+                <!--interiors-->
+                <button class="btn btn-filter rounded-pill" data-filter=".interiors" data-target="#grid1">Корзины
+                </button>
+
+                <button class="btn btn-filter rounded-pill" data-filter=".architecture"
+                        data-target="#grid1">Особое
+                </button>
+                <button class="btn btn-filter rounded-pill" data-filter=".interiors" data-target="#grid1">Лучшие
+                </button>
+            </div>
+            <div class="row mb-10 g-3 g-xl-5 gallery-1" id="grid1" data-isotope>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-1.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-2.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-3.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-4.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-5.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-6.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-7.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-8 architecture">
+                    {{> components/image
+                    link="/assets/images/small-8.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-2.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-1.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-2.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-3.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-4.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 interiors">
+                    {{> components/image
+                    link="/assets/images/small-5.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-3-4"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-6.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-7.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-8 architecture">
+                    {{> components/image
+                    link="/assets/images/small-8.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+                <div class="col-md-6 col-lg-4 architecture">
+                    {{> components/image
+                    link="/assets/images/small-2.jpg"
+                    lightbox="true"
+                    gallery="gallery-1"
+                    class="media-image equal-2-1 equal-md-1-1"
+                    }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message -->
+    <section class="pb-15 py-xl-20 border-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mb-5">
+                    <h2>Let's make something big. <span class="d-block">Together.</span></h2>
+                </div>
+                <div class="col-lg-8">
+                    <form action="#" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="yourName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="yourName" placeholder="Your Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="yourCompany" class="form-label">Your Company</label>
+                            <input type="text" class="form-control" id="yourCompany" placeholder="Your Company">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="yourMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="yourMessage" rows="3" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="" class="btn btn-block btn-primary rounded-pill">Get in touch</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact -->
+    <section class="pb-15 py-xl-20">
+        <div class="container mt-5 mt-lg-10">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1>Interested in working together? Contact!</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate odio ipsa provident ducimus
+                        tenetur quos
+                        architecto voluptatibus inventore similique, hic sunt nisi officia eaque alias magni minima
+                        recusandae nobis
+                        quia.</p>
+                    <hr class="my-4 fw-25 ml-0">
+                    <ul class="list-group list-group-minimal">
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Email</span>
+                            contact@webuildthemes.com
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Phone</span>
+                            +1 234 56 78 90
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <span class="w-25 text-muted">Instagram</span>
+                            @webuildthemes
+                        </li>
+                    </ul>
+                </div>
+                <!--                <div class="col-lg-5">-->
+                <!--                    <div class="media equal-1-1">-->
+                <!--                        <div id="map1" class="map"></div>-->
+                <!--                    </div>-->
+                <!--                    <div class="card bg-black text-white">-->
+                <!--                        <div class="card-body">-->
+                <!--                            <h5>5th Avenue, New York <span class="font-weight-bold d-block">USA 10255</span></h5>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    {{> footer/footer-3-flowers
+    logo="/assets/images/logo/logo-light.svg"
+    class="py-10 py-xl-15 bg-black inverted border-top"
+    }}
+</div>
+
+
+<!-- javascript -->
+{{> partials/scripts}}
+</body>
+
+</html>
